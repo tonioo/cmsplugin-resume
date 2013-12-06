@@ -1,0 +1,2 @@
+include README.rst COPYING
+recursive-include cmsplugin_resume *.html *.po *.mo

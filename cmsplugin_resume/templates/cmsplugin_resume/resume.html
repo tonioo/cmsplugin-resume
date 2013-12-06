@@ -1,0 +1,36 @@
+{% load i18n resume_tags %}
+<header id="resume-header" class="clearfix">
+  <section id="resume-intro">
+    <h2>{{ resume.owner }} - <small>{{ resume.title }}</small></h2>
+    {{ resume.summary|safe }}
+  </section>{% if resume.photo %}
+  <section id="resume-picture">
+    <img src="{{ MEDIA_URL }}/{{ resume.photo }}" />
+  </section>{% endif %}
+</header>
+<section id="experience">
+  <h3>{% trans "Work Experience" %}</h3>
+  <div class="line"></div>
+  {% for exp in resume.workexperience_set.all %}
+  <h4>{{ exp.startdate|date:"F o"|capfirst }} {% trans "to" %} {% if exp.enddate %}{{ exp.enddate|date:"F o" }}{% else %}{% trans "today" %}{% endif %} - {{ exp.company }} - <small>{{ exp.title }}</small></h4>
+  <div class="clearfix expcontainer">
+    <div class="experience">
+      <p>{{ exp.description|safe }}</p>
+    </div>
+    <div class="skills">
+      <p></p>
+      <strong>{% trans "Skills" %}</strong>
+      <p>{% render_skills exp.skills %}</p>
+    </div>
+  </div>
+  {% endfor %}
+</section>
+<section id="formation">
+  <h3>{% trans "Education" %}</h3>
+  <div class="line"></div>
+  {% for edu in resume.education_set.all %}
+  <h4>{{ edu.startdate|date:"F o"|capfirst }} {% trans "to" %} {{ edu.enddate|date:"F o" }} - {{ edu.school }} - <small>{{ edu.degree }}</small></h4>
+  <p></p>
+  <p>{{ edu.field_of_study }}</p>
+  {% endfor %}
+</section>
