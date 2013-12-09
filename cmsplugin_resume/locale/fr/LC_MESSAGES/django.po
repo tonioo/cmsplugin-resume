@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-06 14:45+0100\n"
+"POT-Creation-Date: 2013-12-09 16:06+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: cms_plugins.py:21
+#: cms_plugins.py:30
 msgid "Resume"
 msgstr "CV"
 
@@ -34,7 +34,7 @@ msgid "Work Experience"
 msgstr "Expérience professionelle"
 
 #: templates/cmsplugin_resume/resume.html:15
-#: templates/cmsplugin_resume/resume.html:32
+#: templates/cmsplugin_resume/resume.html:47
 msgid "to"
 msgstr "à"
 
@@ -43,9 +43,18 @@ msgid "today"
 msgstr "aujourd'hui"
 
 #: templates/cmsplugin_resume/resume.html:22
+#: templates/cmsplugin_resume/resume.html:38
 msgid "Skills"
 msgstr "Compétences"
 
 #: templates/cmsplugin_resume/resume.html:29
+msgid "Open source projects"
+msgstr "Projets libres"
+
+#: templates/cmsplugin_resume/resume.html:31
+msgid "since"
+msgstr "depuis"
+
+#: templates/cmsplugin_resume/resume.html:44
 msgid "Education"
 msgstr "Formation"

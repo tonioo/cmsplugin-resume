@@ -26,6 +26,10 @@ class Resume(CMSPlugin):
             wexp.pk = None
             wexp.resume = self
             wexp.save()
+        for proj in from_instance.project_set.all():
+            proj.pk = None
+            proj.resume = self
+            proj.save()
         for edu in from_instance.education_set.all():
             edu.pk = None
             edu.resume = self
