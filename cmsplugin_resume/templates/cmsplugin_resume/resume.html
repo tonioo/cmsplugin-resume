@@ -25,6 +25,21 @@
   </div>
   {% endfor %}
 </section>
+<section id="projects">
+  <h3>{% trans "Open source projects" %}</h3>
+  <div class="line"></div>
+  {% for proj in resume.project_set.all %}<h4><a href="{{ proj.url }}">{{ proj.title }}</a> - {% trans "since" %} {{ proj.startdate|date:"o" }}</h4>
+  <div class="clearfix expcontainer">
+    <div class="experience">
+      <p>{{ proj.description|safe }}</p>
+    </div>
+    <div class="skills">
+      <p></p>
+      <strong>{% trans "Skills" %}</strong>
+      <p>{% render_skills proj.skills %}</p>
+    </div>
+  </div>{% endfor %}
+</section>
 <section id="formation">
   <h3>{% trans "Education" %}</h3>
   <div class="line"></div>

@@ -2,7 +2,9 @@ from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 from django.utils.translation import ugettext_lazy as _
 from django.contrib import admin
-from cmsplugin_resume.models import Resume, WorkExperience, Education
+from cmsplugin_resume.models import (
+    Resume, WorkExperience, Education, Project
+)
 
 
 class EducationInline(admin.StackedInline):
@@ -13,6 +15,13 @@ class EducationInline(admin.StackedInline):
 class WorkExperienceInline(admin.StackedInline):
     model = WorkExperience
     extra = 1
+    fields = ('title', 'startdate', 'enddate', 'description', 'skills')
+
+
+class ProjectsInline(admin.StackedInline):
+    model = Project
+    extra = 1
+    fields = ('title', 'url', 'startdate', 'description', 'skills')
 
 
 class ResumePlugin(CMSPluginBase):
@@ -22,6 +31,7 @@ class ResumePlugin(CMSPluginBase):
     render_template = "cmsplugin_resume/resume.html"
 
     inlines = [
+        ProjectsInline,
         WorkExperienceInline,
         EducationInline
     ]

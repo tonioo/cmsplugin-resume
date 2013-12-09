@@ -32,17 +32,23 @@ class Resume(CMSPlugin):
             edu.save()
 
 
-class WorkExperience(models.Model):
+class Experience(models.Model):
     title = models.CharField(max_length=300)
-    company = models.CharField(max_length=150)
     startdate = models.DateField()
-    enddate = models.DateField(blank=True, null=True)
     description = HTMLField(blank=True)
     resume = models.ForeignKey(Resume)
     skills = models.TextField()
 
+    class Meta:
+        abstract = True
+
     def __unicode__(self):
         return self.title
+
+
+class WorkExperience(Experience):
+    company = models.CharField(max_length=150)
+    enddate = models.DateField(blank=True, null=True)
 
 
 class Education(models.Model):
@@ -55,3 +61,7 @@ class Education(models.Model):
 
     def __unicode__(self):
         return self.degree
+
+
+class Project(Experience):
+    url = models.URLField()
