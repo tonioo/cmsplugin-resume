@@ -34,6 +34,10 @@ class Resume(CMSPlugin):
             edu.pk = None
             edu.resume = self
             edu.save()
+        for skc in from_instance.skillscategory_set.all():
+            skc.pk = None
+            skc.resume = self
+            skc.save()
 
 
 class Experience(models.Model):
@@ -69,3 +73,13 @@ class Education(models.Model):
 
 class Project(Experience):
     url = models.URLField()
+
+
+class SkillsCategory(models.Model):
+    name = models.CharField(max_length=200)
+    skills = models.TextField()
+    resume = models.ForeignKey(Resume)
+
+    def __unicode__(self):
+        return self.name
+
