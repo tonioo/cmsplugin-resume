@@ -8,6 +8,16 @@
     <img src="{{ MEDIA_URL }}/{{ resume.photo }}" />
   </section>{% endif %}
 </header>
+<section id="skills">
+  <h3>{% trans "Skills" %}</h3>
+  <div class="line"></div>
+  <div class="clearfix skc">{% for skc in resume.skillscategory_set.all %}
+    <div class="skc-name"><span class="label label-big">{{ skc.name }}</span></div>
+    <div class="skc-skills">
+      {% render_big_skills skc.skills %}
+    </div>
+  {% endfor %}</div>
+</section>
 <section id="experience">
   <h3>{% trans "Work Experience" %}</h3>
   <div class="line"></div>
@@ -20,7 +30,7 @@
     <div class="skills">
       <p></p>
       <strong>{% trans "Skills" %}</strong>
-      <p>{% render_skills exp.skills %}</p>
+      <p>{% render_normal_skills exp.skills %}</p>
     </div>
   </div>
   {% endfor %}
@@ -36,7 +46,7 @@
     <div class="skills">
       <p></p>
       <strong>{% trans "Skills" %}</strong>
-      <p>{% render_skills proj.skills %}</p>
+      <p>{% render_normal_skills proj.skills %}</p>
     </div>
   </div>{% endfor %}
 </section>
